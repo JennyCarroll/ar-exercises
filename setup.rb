@@ -7,6 +7,7 @@ require_relative 'lib/employee'
 ActiveRecord::Base.logger = Logger.new(STDOUT)
 
 puts 'Establishing connection to database ...'
+#allows Active Record to connect to your Postgres database
 ActiveRecord::Base.establish_connection(
   adapter: 'postgresql',
   database: 'ar_exercises',
@@ -21,7 +22,7 @@ ActiveRecord::Base.establish_connection(
 puts 'CONNECTED'
 
 puts 'Setting up Database (recreating tables) ...'
-
+#module in rails called active record :: calling the class schema
 ActiveRecord::Schema.define do
   drop_table :stores if ActiveRecord::Base.connection.table_exists?(:stores)
   drop_table :employees if ActiveRecord::Base.connection.table_exists?(:employees)
